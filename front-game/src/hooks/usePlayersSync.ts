@@ -109,10 +109,13 @@ export function usePlayersSync(initialName?: string) {
               event: "*",
               schema: "public",
               table: "players",
+              filter: "*",
             },
             handleChange
           )
-          .subscribe();
+          .subscribe((status) => {
+            console.log("Subscription status:", status);
+          });
 
         setIsInitialized(true);
       } catch (err) {
